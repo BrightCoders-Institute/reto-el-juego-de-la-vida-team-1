@@ -1,9 +1,9 @@
-const rows = 4;
+const filas = 4;
 const columns = 8;
 
 class Table {
     constructor(){
-        // this.rows = rows;
+        // this.filas = filas;
         // this.columns = columns;
         this.tab = [
             [".",".",".",".",".",".","."],
@@ -16,7 +16,7 @@ class Table {
 
     generateTable() {
         let arrayColumns = [];
-        for(let i = 0; i < this.rows; i++){
+        for(let i = 0; i < this.filas; i++){
             for(let j = 0; j < this.columns; j++){
                 let randomNumber = Math.round(Math.random());
                 let cell = randomNumber === 1 ? "*" : ".";
@@ -32,21 +32,24 @@ class Table {
             console.log(item.join(""));
         })
     }
+
+
+
 }
 
 class Game {
     constructor(){
-        // this.rows = rows
+        // this.filas = filas
         // this.columns = columns
 
-        this.board = [];
+        this.cuadricula = [];
     }
 
 
     play(){
-        let board = new Table();
-        // board.generateTable();
-        board.print();
+        let cuadricula = new Table();
+        // cuadricula.generateTable();
+        cuadricula.print();
     }
 }
 
