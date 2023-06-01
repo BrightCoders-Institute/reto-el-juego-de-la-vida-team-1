@@ -1,58 +1,23 @@
-const filas = 4;
-const columns = 8;
-
-class Table {
-    constructor(){
-        // this.filas = filas;
-        // this.columns = columns;
-        this.tab = [
-            [".",".",".",".",".",".","."],
-            [".",".","*","*",".",".","."],
-            [".",".","*","*","*",".","."],
-            [".",".",".",".",".",".","."],
-            [".",".",".",".",".",".","."],
-        ];
+class juegoDeLaVida {
+    constructor(filas, columnas) {
+      this.filas = filas;
+      this.columnas = columnas;
+      this.cuadricula = this.crearMatriz();
+      this.iniciarMatriz();
     }
-
-    generateTable() {
-        let arrayColumns = [];
-        for(let i = 0; i < this.filas; i++){
-            for(let j = 0; j < this.columns; j++){
-                let randomNumber = Math.round(Math.random());
-                let cell = randomNumber === 1 ? "*" : ".";
-                arrayColumns.push(cell);
-            }
-            this.tab.push(arrayColumns);
-            arrayColumns = [];
+  
+    crearMatriz() {
+      const cuadricula = new Array(this.filas);
+      for (let i = 0; i < this.filas; i++) {
+        cuadricula[i] = new Array(this.columnas).fill(0);
+      }
+      return cuadricula;
+    }
+  
+    iniciarMatriz() {
+      for (let i = 0; i < this.filas; i++) {
+        for (let j = 0; j < this.columnas; j++) {
+          this.cuadricula[i][j] = Math.random() > 0.5 ? 1 : 0;
         }
-    }
-    
-    print() {
-        this.tab.forEach( (item) => {
-            console.log(item.join(""));
-        })
-    }
-
-
-
-}
-
-class Game {
-    constructor(){
-        // this.filas = filas
-        // this.columns = columns
-
-        this.cuadricula = [];
-    }
-
-
-    play(){
-        let cuadricula = new Table();
-        // cuadricula.generateTable();
-        cuadricula.print();
-    }
-}
-
-const game = new Game();
-game.play();
-
+      }
+    }}
