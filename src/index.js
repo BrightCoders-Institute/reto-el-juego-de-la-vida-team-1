@@ -1,12 +1,12 @@
 class JuegoDeLaVida {
-  constructor(filas, columnas) {
+  constructor (filas, columnas) {
     this.filas = filas;
     this.columnas = columnas;
     this.cuadricula = this.createMatriz();
     this.initMatriz();
   }
 
-  createMatriz() {
+  createMatriz () {
     const cuadricula = new Array(this.filas);
     for (let i = 0; i < this.filas; i++) {
       cuadricula[i] = new Array(this.columnas).fill(0);
@@ -14,7 +14,7 @@ class JuegoDeLaVida {
     return cuadricula;
   }
 
-  initMatriz() {
+  initMatriz () {
     for (let i = 0; i < this.filas; i++) {
       for (let j = 0; j < this.columnas; j++) {
         this.cuadricula[i][j] = Math.random() > 0.5 ? 1 : 0;
@@ -22,7 +22,7 @@ class JuegoDeLaVida {
     }
   }
 
-  print() {
+  print () {
     for (let i = 0; i < this.filas; i++) {
       let filastr = "";
       for (let j = 0; j < this.columnas; j++) {
@@ -33,14 +33,14 @@ class JuegoDeLaVida {
     console.log("");
   }
 
-  nextGeneration() {
+  nextGeneration () {
     const nuevacuadricula = this.createMatriz();
     for (let i = 0; i < this.filas; i++) {
       for (let j = 0; j < this.columnas; j++) {
         const neighbors = this.verify(i, j);
         if (this.cuadricula[i][j] === 1) {
           if (neighbors < 2 || neighbors > 3) {
-            nuevacuadricula[i][j] = 0; // Celula muere por sobre/bajapoblacion 
+            nuevacuadricula[i][j] = 0; // Celula muere por sobre/bajapoblacion
           } else {
             nuevacuadricula[i][j] = 1; // Celula sobrevive
           }
@@ -54,7 +54,7 @@ class JuegoDeLaVida {
     this.cuadricula = nuevacuadricula;
   }
 
-  verify(fila, columna) {
+  verify (fila, columna) {
     let count = 0;
     for (let i = -1; i <= 1; i++) {
       for (let j = -1; j <= 1; j++) {
@@ -70,14 +70,13 @@ class JuegoDeLaVida {
     return count;
   }
 
-  play(iterations) {
+  play (iterations) {
     for (let i = 0; i < iterations; i++) {
       console.log(`Generación ${i + 1}:`);
       this.print();
       this.nextGeneration();
     }
   }
-
 }
 
 const juego = new JuegoDeLaVida(4, 8);
