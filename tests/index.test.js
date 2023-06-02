@@ -25,7 +25,20 @@ describe("Pruebas del archivo /.index.js", () => {
       for (let i = 0; i < matriz.length; i++) {
         for (let j = 0; j < matriz[i].length; j++) {
           expect(matriz[i][j]).toBeGreaterThanOrEqual(0);
-          expect(matriz[i][j]).toBeGreaterThanOrEqual(1);
+          expect(matriz[i][j]).toBeLessThanOrEqual(1);
+        }
+      }
+    });
+  });
+
+  describe("verify", () => {
+    const juego = new JuegoDeLaVida(4, 8);
+    juego.initMatriz();
+    it("Verificar numero de vecinos", () => {
+      for (let i = 0; i < 4; i++) {
+        for (let j = 0; j < 8; j++) {
+          expect(juego.verify(i, j)).toBeGreaterThanOrEqual(0);
+          expect(juego.verify(i, j)).toBeLessThanOrEqual(8);
         }
       }
     });
