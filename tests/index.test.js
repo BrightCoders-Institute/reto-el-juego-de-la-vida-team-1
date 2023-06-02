@@ -68,4 +68,17 @@ describe("Pruebas del archivo /.index.js", () => {
       ]);
     });
   });
+
+  describe("Pruebas en el método play()", () => {
+    test("Probar que el método print() se ejecute la cantidad de veces que se define", () => {
+      jest.spyOn(juego, "print");
+      juego.play(5);
+      expect(juego.print).toHaveBeenCalledTimes(5);
+    });
+    test("Probar que el método nextGeneration() se ejecute la cantidad de veces que se define", () => {
+      jest.spyOn(juego, "nextGeneration");
+      juego.play(3);
+      expect(juego.nextGeneration).toHaveBeenCalledTimes(3);
+    });
+  });
 });
