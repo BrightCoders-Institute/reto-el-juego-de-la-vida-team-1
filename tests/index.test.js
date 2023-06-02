@@ -49,4 +49,23 @@ describe("Pruebas del archivo /.index.js", () => {
       }
     });
   });
+
+  describe('Pruebas en el metodo poara generar la siguiente generacion', () => { 
+    test('debe calcular la siguiente generacion de la matriz acontinuación', () => { 
+      const tabla = new JuegoDeLaVida(3, 3);
+      tabla.cuadricula = [
+        [0, 1, 0],
+        [0, 1, 0],
+        [0, 1, 0],
+      ];
+
+      tabla.nextGeneration();
+
+      expect(tabla.cuadricula).toEqual([
+        [0, 0, 0],
+        [1, 1, 1],
+        [0, 0, 0],
+      ]);
+     })
+   })
 });
