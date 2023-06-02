@@ -8,6 +8,12 @@ describe("Pruebas del archivo /.index.js", () => {
     expect(typeof juego.createMatriz).toBe("function");
     expect(typeof matriz).toBe("object");
 
+    it("iniciar con dimensiones correctas", () => {
+      const cuadricula = juego.createMatriz();
+      expect(cuadricula.length).toBe(4);
+      expect(cuadricula[0].length).toBe(8);
+    });
+
     it("iniciar matriz con ceros", () => {
       const juego = new JuegoDeLaVida(2, 2);
       const matriz = juego.createMatriz();
