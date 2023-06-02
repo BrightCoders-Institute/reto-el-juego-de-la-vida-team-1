@@ -1,4 +1,4 @@
-module.exports = class JuegoDeLaVida {
+class JuegoDeLaVida {
   constructor (filas, columnas) {
     this.filas = filas;
     this.columnas = columnas;
@@ -79,8 +79,7 @@ module.exports = class JuegoDeLaVida {
   }
 };
 
-// const juego = new JuegoDeLaVida(4, 8);
-// juego.play(5);
+const juego = new JuegoDeLaVida(4, 8);
+juego.play(5);
 
-// const juego = new JuegoDeLaVida(4, 8);
-// juego.play(2);
+module.exports = JuegoDeLaVida;
