@@ -32,27 +32,45 @@ class JuegoDeLaVida {
     }
     console.log("");
   }
-
-  nextGeneration () {
-    const nuevacuadricula = this.createMatriz();
+  nextGeneration() {
+    const nuevaCuadricula = this.createMatriz();
+  
     for (let i = 0; i < this.filas; i++) {
       for (let j = 0; j < this.columnas; j++) {
         const neighbors = this.verify(i, j);
-        if (this.cuadricula[i][j] === 1) {
-          if (neighbors < 2 || neighbors > 3) {
-            nuevacuadricula[i][j] = 0; // Celula muere por sobre/bajapoblacion
-          } else {
-            nuevacuadricula[i][j] = 1; // Celula sobrevive
-          }
+        const currentState = this.cuadricula[i][j];
+  
+        if (currentState === 1) {
+          nuevaCuadricula[i][j] = (neighbors < 2 || neighbors > 3) ? 0 : 1; // Celula muere o sobrevive
         } else {
-          if (neighbors === 3) {
-            nuevacuadricula[i][j] = 1; // Celula se reproduce
-          }
+          nuevaCuadricula[i][j] = (neighbors === 3) ? 1 : 0; // Celula se reproduce o permanece muerta
         }
       }
     }
-    this.cuadricula = nuevacuadricula;
+  
+    this.cuadricula = nuevaCuadricula;
   }
+  
+  // nextGeneration () {
+  //   const nuevacuadricula = this.createMatriz();
+  //   for (let i = 0; i < this.filas; i++) {
+  //     for (let j = 0; j < this.columnas; j++) {
+  //       const neighbors = this.verify(i, j);
+  //       if (this.cuadricula[i][j] === 1) {
+  //         if (neighbors < 2 || neighbors > 3) {
+  //           nuevacuadricula[i][j] = 0; // Celula muere por sobre/bajapoblacion
+  //         } else {
+  //           nuevacuadricula[i][j] = 1; // Celula sobrevive
+  //         }
+  //       } else {
+  //         if (neighbors === 3) {
+  //           nuevacuadricula[i][j] = 1; // Celula se reproduce
+  //         }
+  //       }
+  //     }
+  //   }
+  //   this.cuadricula = nuevacuadricula;
+  // }
 
   verify (fila, columna) {
     let count = 0;
