@@ -15,11 +15,19 @@ class JuegoDeLaVida {
   }
 
   initMatriz () {
-    for (let i = 0; i < this.filas; i++) {
-      for (let j = 0; j < this.columnas; j++) {
-        this.cuadricula[i][j] = Math.random() > 0.5 ? 1 : 0;
-      }
-    }
+    this.cuadricula = Array(this.filas)
+      .fill()
+      .map(() =>
+        Array(this.columnas)
+          .fill()
+          .map(() => (Math.random() > 0.5 ? 1 : 0))
+      );
+
+    // for (let i = 0; i < this.filas; i++) {
+    //   for (let j = 0; j < this.columnas; j++) {
+    //     this.cuadricula[i][j] = Math.random() > 0.5 ? 1 : 0;
+    //   }
+    // }
   }
 
   print () {
@@ -32,14 +40,15 @@ class JuegoDeLaVida {
     }
     console.log("");
   }
-  nextGeneration() {
+
+  nextGeneration () {
     const nuevaCuadricula = this.createMatriz();
-  
+
     for (let i = 0; i < this.filas; i++) {
       for (let j = 0; j < this.columnas; j++) {
         const neighbors = this.verify(i, j);
         const currentState = this.cuadricula[i][j];
-  
+
         if (currentState === 1) {
           nuevaCuadricula[i][j] = (neighbors < 2 || neighbors > 3) ? 0 : 1; // Celula muere o sobrevive
         } else {
@@ -47,10 +56,10 @@ class JuegoDeLaVida {
         }
       }
     }
-  
+
     this.cuadricula = nuevaCuadricula;
   }
-  
+
   // nextGeneration () {
   //   const nuevacuadricula = this.createMatriz();
   //   for (let i = 0; i < this.filas; i++) {
