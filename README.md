@@ -48,4 +48,4 @@ Una vez que se ejecuta el proyecto, podremos ver las generaciones de células, d
 - Fernando Aguilar ()
 - Alberto García (*AlbertoG22*)
 ## Badges
-* **Codacy**: https://app.codacy.com/gh/BrightCoders-Institute/reto-el-juego-de-la-vida-team-1/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_grade 
+*  - Codacy: A ![Codacy Badge](https://app.codacy.com/project/badge/Grade/0f579a010cf543beab1a846035db9a53)
