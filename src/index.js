@@ -33,12 +33,16 @@ class JuegoDeLaVida {
   }
 
   nextGeneration () {
-    this.cuadricula = this.cuadricula.map((fila, i) =>
-      fila.map((estado, j) => {
+    const nuevaCuadricula = [];
+    for (let i = 0; i < this.cuadricula.length; i++) {
+      nuevaCuadricula[i] = [];
+      for (let j = 0; j < this.cuadricula[i].length; j++) {
         const vecinos = this.verify(i, j);
-        return estado ? (vecinos === 2 || vecinos === 3) ? 1 : 0 : (vecinos === 3) ? 1 : 0;
-      })
-    );
+        nuevaCuadricula[i][j] = this.cuadricula[i][j] ? (vecinos === 2 || vecinos === 3) ? 1 : 0 : (vecinos === 3) ? 1 : 0;
+      }
+    }
+
+    this.cuadricula = nuevaCuadricula;
   }
 
   verify (fila, columna) {
