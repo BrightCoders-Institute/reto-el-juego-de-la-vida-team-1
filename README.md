@@ -1,3 +1,4 @@
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/8baac7fa00b84004b91d5c3713a74a74)](https://app.codacy.com/gh/BrightCoders-Institute/reto-el-juego-de-la-vida-team-1?utm_source=github.com&utm_medium=referral&utm_content=BrightCoders-Institute/reto-el-juego-de-la-vida-team-1&utm_campaign=Badge_Grade)
 [![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-24ddc0f5d75046c5622901739e7c5dd533143b0c8e959d652212380cedb1ea36.svg)](https://classroom.github.com/a/-MyOgzrv)
 ![BrightCoders Logo](img/logo.png)
 
