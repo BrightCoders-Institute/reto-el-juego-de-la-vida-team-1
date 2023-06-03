@@ -47,16 +47,12 @@ class JuegoDeLaVida {
   }
 
   nextGeneration () {
-    const nuevaCuadricula = this.createMatriz();
-
-    for (let i = 0; i < this.filas; i++) {
-      for (let j = 0; j < this.columnas; j++) {
-        const neighbors = this.verify(i, j);
-        nuevaCuadricula[i][j] = (this.cuadricula[i][j] === 1) ? (neighbors < 2 || neighbors > 3) ? 0 : 1 : (neighbors === 3) ? 1 : 0;
-      }
-    }
-
-    this.cuadricula = nuevaCuadricula;
+    this.cuadricula = this.cuadricula.map((fila, i) =>
+      fila.map((estado, j) => {
+        const vecinos = this.verify(i, j);
+        return estado ? vecinos === 2 || vecinos === 3 || 0 : vecinos === 3 ?? 0;
+      })
+    );
   }
 
   // nextGeneration() {
@@ -124,7 +120,7 @@ class JuegoDeLaVida {
   }
 };
 
-const juego = new JuegoDeLaVida(4, 8);
-juego.play(5);
+const juego = new JuegoDeLaVida(3, 3);
+juego.play(2);
 
 module.exports = JuegoDeLaVida;
