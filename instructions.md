@@ -155,6 +155,9 @@ Generación 2:
 ........
 ```
 
+## Badge
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/0f579a010cf543beab1a846035db9a53)](https://app.codacy.com/gh/BrightCoders-Institute/reto-el-juego-de-la-vida-team-1/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_grade)
+
 ## Recursos
 
 - [Javascript](https://brightcoders-2.gitbook.io/brightcoders-handbook/javascript-typescript/javascript)
