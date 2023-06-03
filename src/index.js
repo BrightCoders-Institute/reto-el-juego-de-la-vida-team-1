@@ -31,17 +31,22 @@ class JuegoDeLaVida {
   }
 
   print () {
-    for (let i = 0; i < this.filas; i++) {
-      let filastr = "";
-      for (let j = 0; j < this.columnas; j++) {
-        filastr += this.cuadricula[i][j] ? "*" : ".";
-      }
+    this.cuadricula.forEach((fila) => {
+      const filastr = fila.map((elemento) => (elemento ? "*" : ".")).join("");
       console.log(filastr);
-    }
+    });
     console.log("");
+    // for (let i = 0; i < this.filas; i++) {
+    //   let filastr = "";
+    //   for (let j = 0; j < this.columnas; j++) {
+    //     filastr += this.cuadricula[i][j] ? "*" : ".";
+    //   }
+    //   console.log(filastr);
+    // }
+    // console.log("");
   }
 
-  nextGeneration() {
+  nextGeneration () {
     const nuevaCuadricula = this.createMatriz();
 
     for (let i = 0; i < this.filas; i++) {
@@ -53,15 +58,15 @@ class JuegoDeLaVida {
 
     this.cuadricula = nuevaCuadricula;
   }
-  
+
   // nextGeneration() {
   //   const nuevaCuadricula = this.createMatriz();
-  
+
   //   for (let i = 0; i < this.filas; i++) {
   //     for (let j = 0; j < this.columnas; j++) {
   //       const neighbors = this.verify(i, j);
   //       const currentState = this.cuadricula[i][j];
-  
+
   //       if (currentState === 1) {
   //         nuevaCuadricula[i][j] = (neighbors < 2 || neighbors > 3) ? 0 : 1; // Celula muere o sobrevive
   //       } else {
@@ -69,10 +74,10 @@ class JuegoDeLaVida {
   //       }
   //     }
   //   }
-  
+
   //   this.cuadricula = nuevaCuadricula;
   // }
-  
+
   // nextGeneration () {
   //   const nuevacuadricula = this.createMatriz();
   //   for (let i = 0; i < this.filas; i++) {
