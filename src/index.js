@@ -47,18 +47,30 @@ class JuegoDeLaVida {
 
   verify (fila, columna) {
     let count = 0;
+    const filas = this.filas;
+    const columnas = this.columnas;
+
     for (let i = -1; i <= 1; i++) {
       for (let j = -1; j <= 1; j++) {
-        if (i === 0 && j === 0) continue; // salta la celula actual
+        if (this.isCurrentCell(i, j)) continue; // salta la célula actual
         const newF = fila + i;
         const newC = columna + j;
-        if (newF >= 0 && newF < this.filas && newC >= 0 && newC < this.columnas
-        ) {
+
+        if (this.isValidCell(newF, newC, filas, columnas)) {
           count += this.cuadricula[newF][newC];
         }
       }
     }
+
     return count;
+  }
+
+  isCurrentCell (i, j) {
+    return i === 0 && j === 0;
+  }
+
+  isValidCell (fila, columna, filas, columnas) {
+    return fila >= 0 && fila < filas && columna >= 0 && columna < columnas;
   }
 
   play (iterations) {
