@@ -22,12 +22,6 @@ class JuegoDeLaVida {
           .fill()
           .map(() => (Math.random() > 0.5 ? 1 : 0))
       );
-
-    // for (let i = 0; i < this.filas; i++) {
-    //   for (let j = 0; j < this.columnas; j++) {
-    //     this.cuadricula[i][j] = Math.random() > 0.5 ? 1 : 0;
-    //   }
-    // }
   }
 
   print () {
@@ -36,64 +30,16 @@ class JuegoDeLaVida {
       console.log(filastr);
     });
     console.log("");
-    // for (let i = 0; i < this.filas; i++) {
-    //   let filastr = "";
-    //   for (let j = 0; j < this.columnas; j++) {
-    //     filastr += this.cuadricula[i][j] ? "*" : ".";
-    //   }
-    //   console.log(filastr);
-    // }
-    // console.log("");
   }
 
   nextGeneration () {
     this.cuadricula = this.cuadricula.map((fila, i) =>
       fila.map((estado, j) => {
         const vecinos = this.verify(i, j);
-        return estado ? vecinos === 2 || vecinos === 3 || 0 : vecinos === 3 ?? 0;
+        return estado ? (vecinos === 2 || vecinos === 3) ? 1 : 0 : (vecinos === 3) ? 1 : 0;
       })
     );
   }
-
-  // nextGeneration() {
-  //   const nuevaCuadricula = this.createMatriz();
-
-  //   for (let i = 0; i < this.filas; i++) {
-  //     for (let j = 0; j < this.columnas; j++) {
-  //       const neighbors = this.verify(i, j);
-  //       const currentState = this.cuadricula[i][j];
-
-  //       if (currentState === 1) {
-  //         nuevaCuadricula[i][j] = (neighbors < 2 || neighbors > 3) ? 0 : 1; // Celula muere o sobrevive
-  //       } else {
-  //         nuevaCuadricula[i][j] = (neighbors === 3) ? 1 : 0; // Celula se reproduce o permanece muerta
-  //       }
-  //     }
-  //   }
-
-  //   this.cuadricula = nuevaCuadricula;
-  // }
-
-  // nextGeneration () {
-  //   const nuevacuadricula = this.createMatriz();
-  //   for (let i = 0; i < this.filas; i++) {
-  //     for (let j = 0; j < this.columnas; j++) {
-  //       const neighbors = this.verify(i, j);
-  //       if (this.cuadricula[i][j] === 1) {
-  //         if (neighbors < 2 || neighbors > 3) {
-  //           nuevacuadricula[i][j] = 0; // Celula muere por sobre/bajapoblacion
-  //         } else {
-  //           nuevacuadricula[i][j] = 1; // Celula sobrevive
-  //         }
-  //       } else {
-  //         if (neighbors === 3) {
-  //           nuevacuadricula[i][j] = 1; // Celula se reproduce
-  //         }
-  //       }
-  //     }
-  //   }
-  //   this.cuadricula = nuevacuadricula;
-  // }
 
   verify (fila, columna) {
     let count = 0;
@@ -120,7 +66,7 @@ class JuegoDeLaVida {
   }
 };
 
-const juego = new JuegoDeLaVida(3, 3);
+const juego = new JuegoDeLaVida(4, 8);
 juego.play(2);
 
 module.exports = JuegoDeLaVida;
