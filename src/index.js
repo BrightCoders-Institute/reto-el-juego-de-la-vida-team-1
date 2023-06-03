@@ -41,25 +41,38 @@ class JuegoDeLaVida {
     console.log("");
   }
 
-  nextGeneration () {
+  nextGeneration() {
     const nuevaCuadricula = this.createMatriz();
 
     for (let i = 0; i < this.filas; i++) {
       for (let j = 0; j < this.columnas; j++) {
         const neighbors = this.verify(i, j);
-        const currentState = this.cuadricula[i][j];
-
-        if (currentState === 1) {
-          nuevaCuadricula[i][j] = (neighbors < 2 || neighbors > 3) ? 0 : 1; // Celula muere o sobrevive
-        } else {
-          nuevaCuadricula[i][j] = (neighbors === 3) ? 1 : 0; // Celula se reproduce o permanece muerta
-        }
+        nuevaCuadricula[i][j] = (this.cuadricula[i][j] === 1) ? (neighbors < 2 || neighbors > 3) ? 0 : 1 : (neighbors === 3) ? 1 : 0;
       }
     }
 
     this.cuadricula = nuevaCuadricula;
   }
-
+  
+  // nextGeneration() {
+  //   const nuevaCuadricula = this.createMatriz();
+  
+  //   for (let i = 0; i < this.filas; i++) {
+  //     for (let j = 0; j < this.columnas; j++) {
+  //       const neighbors = this.verify(i, j);
+  //       const currentState = this.cuadricula[i][j];
+  
+  //       if (currentState === 1) {
+  //         nuevaCuadricula[i][j] = (neighbors < 2 || neighbors > 3) ? 0 : 1; // Celula muere o sobrevive
+  //       } else {
+  //         nuevaCuadricula[i][j] = (neighbors === 3) ? 1 : 0; // Celula se reproduce o permanece muerta
+  //       }
+  //     }
+  //   }
+  
+  //   this.cuadricula = nuevaCuadricula;
+  // }
+  
   // nextGeneration () {
   //   const nuevacuadricula = this.createMatriz();
   //   for (let i = 0; i < this.filas; i++) {
