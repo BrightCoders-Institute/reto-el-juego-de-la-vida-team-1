@@ -46,12 +46,16 @@ class JuegoDeLaVida {
   }
 
   verify (fila, columna) {
-    let count = 0;
     const filas = this.filas;
     const columnas = this.columnas;
+    const iInicio = Math.max(fila - 1, 0);
+    const iFin = Math.min(fila + 1, filas - 1);
+    const jInicio = Math.max(columna - 1, 0);
+    const jFin = Math.min(columna + 1, columnas - 1);
+    let count = 0;
 
-    for (let i = Math.max(fila - 1, 0); i <= Math.min(fila + 1, filas - 1); i++) {
-      for (let j = Math.max(columna - 1, 0); j <= Math.min(columna + 1, columnas - 1); j++) {
+    for (let i = iInicio; i <= iFin; i++) {
+      for (let j = jInicio; j <= jFin; j++) {
         if (i === fila && j === columna) continue; // salta la célula actual
         count += this.cuadricula[i][j];
       }
